@@ -1,4 +1,3 @@
-"use strict";
 class MinApp {
     constructor() {
         this.arrs = [];
@@ -32,4 +31,31 @@ class MinApp {
         this.outputs.item(3).value = this.sort()[this.arrs.length - 1].toString();
     }
 }
-const test = new MinApp();
+class MaxApp extends MinApp {
+    constructor() {
+        super();
+        this.dynam = document.querySelector(".dynamic > input");
+        this.editAmountOfInputs();
+    }
+    editAmountOfInputs() {
+        this.dynam.addEventListener("input", () => {
+            this.removeOrAdd(+this.dynam.value);
+        });
+    }
+    removeOrAdd(inp) {
+        // REMOVE THEM ALL
+        // let test =document.querySelector(".inputs > inputs")
+        //    console.log(test)
+        //    this.inputs.item(0).remove();
+        // if they are less 
+        // if (inp == this.inputs.length) { return }
+        // // catch it into array 
+        // if (inp <= this.inputs.length && inp >0) {
+        //     for(let i = inp; i>0;i--){
+        //         this.inputs.item(i).remove();
+        //     }
+        // }
+        //remove everything append
+    }
+}
+const test = new MaxApp();
