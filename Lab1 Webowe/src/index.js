@@ -1,9 +1,20 @@
-class MinApp {
+class MaxApp {
     constructor() {
         this.arrs = [];
-        this.inputs = document.querySelectorAll(".inputs > input");
+        // this.inputs = document.querySelectorAll(".inputs > input");
         this.outputs = document.querySelectorAll(".outputs > input");
-        this.addEvents(this.inputs);
+        this.additems();
+        // this.addEvents(this.inputs);
+    }
+    additems() {
+        let count = document.querySelector(".dynamic > input");
+        let nodesToAdd;
+        count.addEventListener("input", () => {
+            // console.log(count.value)
+            for (let i = 0; i < +count.value; i++) {
+                nodesToAdd.push();
+            }
+        });
     }
     addEvents(input) {
         input.forEach((e) => {
@@ -31,31 +42,32 @@ class MinApp {
         this.outputs.item(3).value = this.sort()[this.arrs.length - 1].toString();
     }
 }
-class MaxApp extends MinApp {
-    constructor() {
-        super();
-        this.dynam = document.querySelector(".dynamic > input");
-        this.editAmountOfInputs();
-    }
-    editAmountOfInputs() {
-        this.dynam.addEventListener("input", () => {
-            this.removeOrAdd(+this.dynam.value);
-        });
-    }
-    removeOrAdd(inp) {
-        // REMOVE THEM ALL
-        // let test =document.querySelector(".inputs > inputs")
-        //    console.log(test)
-        //    this.inputs.item(0).remove();
-        // if they are less 
-        // if (inp == this.inputs.length) { return }
-        // // catch it into array 
-        // if (inp <= this.inputs.length && inp >0) {
-        //     for(let i = inp; i>0;i--){
-        //         this.inputs.item(i).remove();
-        //     }
-        // }
-        //remove everything append
-    }
-}
+// class MaxApp extends MinApp {
+//     private dynam: HTMLInputElement;
+//     constructor() {
+//         super();
+//         this.dynam = document.querySelector(".dynamic > input")
+//         this.editAmountOfInputs();
+//     }
+//     private editAmountOfInputs(): void {
+//         this.dynam.addEventListener("input", () => {
+//             this.removeOrAdd(+this.dynam.value)
+//         })
+//     }
+//     private removeOrAdd(inp: number): void {
+// REMOVE THEM ALL
+// let test =document.querySelector(".inputs > inputs")
+//    console.log(test)
+//    this.inputs.item(0).remove();
+// if they are less 
+// if (inp == this.inputs.length) { return }
+// // catch it into array 
+// if (inp <= this.inputs.length && inp >0) {
+//     for(let i = inp; i>0;i--){
+//         this.inputs.item(i).remove();
+//     }
+// }
+//remove everything append
+//     }
+// }
 const test = new MaxApp();
