@@ -35,12 +35,12 @@ class MaxApp {
             e.addEventListener("input", () => {
                 // this is a value from single input 
                 // do 2 things with that p
-                this.arrs.push(+e.value);
-                this.display();
+                this.checkForErrorInInput(e);
             });
         });
     }
     sum() {
+        console.log(this.arrs);
         return this.arrs.reduce((a, b) => a + b);
     }
     avg() {
@@ -54,6 +54,26 @@ class MaxApp {
         this.outputs.item(1).value = this.avg().toString();
         this.outputs.item(2).value = this.sort()[0].toString();
         this.outputs.item(3).value = this.sort()[this.arrs.length - 1].toString();
+    }
+    checkForErrorInInput(input) {
+        if ((/^[0-9]+$/.test(input.value))) {
+            this.removeImageError();
+            this.arrs.push(+input.value);
+            this.display();
+        }
+        else {
+            this.appendImageError();
+        }
+    }
+    appendImageError() {
+        let location = document.querySelector(".error");
+        let image = document.createElement("img");
+        image.setAttribute("src", "./images/errno.png");
+        location.appendChild(image);
+    }
+    removeImageError() {
+        let location = document.querySelector(".error > img");
+        location === null || location === void 0 ? void 0 : location.remove();
     }
 }
 const test = new MaxApp();
