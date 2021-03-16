@@ -8,12 +8,26 @@ class MaxApp {
     }
     additems() {
         let count = document.querySelector(".dynamic > input");
-        let nodesToAdd;
+        let nodesToAdd = [];
+        let x = document.createElement("input");
+        x.setAttribute("type", "number");
+        x.setAttribute("autocomplete", "off");
         count.addEventListener("input", () => {
+            nodesToAdd = [];
+            document.querySelector(".inputs").innerHTML = "";
             // console.log(count.value)
             for (let i = 0; i < +count.value; i++) {
-                nodesToAdd.push();
+                nodesToAdd.push(x);
             }
+            nodesToAdd.forEach((e) => {
+                let x = document.createElement("input");
+                x.setAttribute("type", "number");
+                x.setAttribute("autocomplete", "off");
+                document.querySelector(".inputs").appendChild(x);
+            });
+            console.log(nodesToAdd);
+            let test = document.querySelectorAll(".inputs > input");
+            this.addEvents(test);
         });
     }
     addEvents(input) {
@@ -42,32 +56,4 @@ class MaxApp {
         this.outputs.item(3).value = this.sort()[this.arrs.length - 1].toString();
     }
 }
-// class MaxApp extends MinApp {
-//     private dynam: HTMLInputElement;
-//     constructor() {
-//         super();
-//         this.dynam = document.querySelector(".dynamic > input")
-//         this.editAmountOfInputs();
-//     }
-//     private editAmountOfInputs(): void {
-//         this.dynam.addEventListener("input", () => {
-//             this.removeOrAdd(+this.dynam.value)
-//         })
-//     }
-//     private removeOrAdd(inp: number): void {
-// REMOVE THEM ALL
-// let test =document.querySelector(".inputs > inputs")
-//    console.log(test)
-//    this.inputs.item(0).remove();
-// if they are less 
-// if (inp == this.inputs.length) { return }
-// // catch it into array 
-// if (inp <= this.inputs.length && inp >0) {
-//     for(let i = inp; i>0;i--){
-//         this.inputs.item(i).remove();
-//     }
-// }
-//remove everything append
-//     }
-// }
 const test = new MaxApp();

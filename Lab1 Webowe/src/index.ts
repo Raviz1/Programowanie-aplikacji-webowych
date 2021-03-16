@@ -4,35 +4,54 @@ class MaxApp {
     protected inputs: NodeListOf<HTMLInputElement>;
     private outputs: NodeListOf<HTMLInputElement>;
     protected arrs: number[] = [];
+
     constructor() {
         // this.inputs = document.querySelectorAll(".inputs > input");
         this.outputs = document.querySelectorAll(".outputs > input")
 
-    
+
 
         this.additems();
-            // this.addEvents(this.inputs);
+
+        // this.addEvents(this.inputs);
     }
     private additems(): void {
         let count: HTMLInputElement = document.querySelector(".dynamic > input");
-        let nodesToAdd : Array<HTMLInputElement>;
-        count.addEventListener("input", () =>{
-           
+        let nodesToAdd: Array<HTMLInputElement> = [];
+        let x = document.createElement("input");
+        x.setAttribute("type", "number");
+        x.setAttribute("autocomplete", "off")
+        count.addEventListener("input", () => {
+            nodesToAdd = [];
+            document.querySelector(".inputs").innerHTML= "";
             // console.log(count.value)
-             for(let i =0; i < +count.value; i++ ){
-                nodesToAdd.push()
-             }
+            for (let i = 0; i < +count.value; i++) {
+                nodesToAdd.push(x)
+            }
+
+            nodesToAdd.forEach((e) => {
+                let x = document.createElement("input");
+                x.setAttribute("type", "number");
+                x.setAttribute("autocomplete", "off")
+                document.querySelector(".inputs").appendChild(x)
+            })
+
+
+            console.log(nodesToAdd)
+            let test: NodeListOf<HTMLInputElement> = document.querySelectorAll(".inputs > input")
+            this.addEvents(test);
         })
 
-        
+
 
     }
 
-    private addEvents(input: NodeListOf<HTMLInputElement>): void {
+    private addEvents(input?: NodeListOf<HTMLInputElement>): void {
         input.forEach((e) => {
             e.addEventListener("input", () => {
                 // this is a value from single input 
                 // do 2 things with that p
+               
                 this.arrs.push(+e.value);
                 this.display();
 
@@ -58,35 +77,5 @@ class MaxApp {
 
 
 }
-// class MaxApp extends MinApp {
 
-//     private dynam: HTMLInputElement;
-//     constructor() {
-//         super();
-//         this.dynam = document.querySelector(".dynamic > input")
-//         this.editAmountOfInputs();
-//     }
-//     private editAmountOfInputs(): void {
-//         this.dynam.addEventListener("input", () => {
-//             this.removeOrAdd(+this.dynam.value)
-//         })
-//     }
-//     private removeOrAdd(inp: number): void {
-// REMOVE THEM ALL
-// let test =document.querySelector(".inputs > inputs")
-//    console.log(test)
-
-//    this.inputs.item(0).remove();
-// if they are less 
-// if (inp == this.inputs.length) { return }
-// // catch it into array 
-// if (inp <= this.inputs.length && inp >0) {
-//     for(let i = inp; i>0;i--){
-//         this.inputs.item(i).remove();
-//     }
-
-// }
-//remove everything append
-//     }
-// }
 const test = new MaxApp();
