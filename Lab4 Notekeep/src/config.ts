@@ -1,0 +1,1 @@
+export const whereToSave : "local" | "firebird" = "local"

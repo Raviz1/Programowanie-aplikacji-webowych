@@ -1,0 +1,44 @@
+body,
+html {
+    margin: 0;
+    overflow: hidden;
+}
+.container {
+    height: 100vh;
+    background-color: gray;
+}
+#display {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 30% auto;
+}
+
+.note {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+.input {
+    position: absolute;
+  
+    right: -300px;
+    display: grid;
+    grid-template-columns: auto auto;
+    transition: 1s;
+    button {
+        grid-column: 1;
+    }
+    input{
+        width: 90%;
+    }
+    *:not(:first-child){
+      
+        grid-column: 2;
+        width: 300px;
+    }
+}
+
+#pinned{
+    display:flex;
+}
